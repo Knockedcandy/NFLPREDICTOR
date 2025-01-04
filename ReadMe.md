@@ -45,6 +45,8 @@ Year: 2024
   DET: 7 Wins, 10 Losses
   HOU: 7 Wins, 10 Losses
   CHI: 7 Wins, 10 Losses
+
+  
 Year: 2025
   BAL: 10 Wins, 7 Losses
   BUF: 6 Wins, 11 Losses
@@ -78,6 +80,8 @@ Year: 2025
   DET: 10 Wins, 5 Losses
   HOU: 6 Wins, 5 Losses
   CHI: 7 Wins, 10 Losses
+
+  
 Year: 2026
   BAL: 9 Wins, 5 Losses
   BUF: 7 Wins, 10 Losses
@@ -111,6 +115,8 @@ Year: 2026
   DET: 12 Wins, 5 Losses
   HOU: 10 Wins, 7 Losses
   CHI: 12 Wins, 5 Losses
+
+  
 Year: 2027
   BAL: 9 Wins, 7 Losses
   BUF: 9 Wins, 8 Losses
@@ -144,6 +150,8 @@ Year: 2027
   DET: 8 Wins, 7 Losses
   HOU: 10 Wins, 7 Losses
   CHI: 9 Wins, 5 Losses
+
+  
 Year: 2028
   BAL: 9 Wins, 8 Losses
   BUF: 7 Wins, 10 Losses
