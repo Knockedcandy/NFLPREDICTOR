@@ -17,23 +17,25 @@ data_df = pd.read_csv(file_paths["data"])
 differential_df = pd.read_csv(file_paths["differential"])
 
 # Preprocessing
-# Process `data_df`
+# Process data
 data_df['spread_favorite'] = pd.to_numeric(data_df['spread_favorite'], errors='coerce')
 data_features = data_df[['spread_favorite', 'over_under_line', 'team_home', 'team_away']].copy()
 
-# Drop rows with missing values in `data_features`
+
 data_features.dropna(inplace=True)
 
-# Encode categorical columns (team names)
+#Team names
 all_teams = pd.concat([data_features['team_home'], data_features['team_away']]).unique()
 team_encoding = {team: idx for idx, team in enumerate(all_teams)}
 data_features['team_home'] = data_features['team_home'].map(team_encoding)
 data_features['team_away'] = data_features['team_away'].map(team_encoding)
 
-# Process `differential_df`
+# Process differentials
 differential_features = differential_df[['team_home', 'team_away', 'score_home', 'score_away']].copy()
 
+
 differential_features.dropna(inplace=True)
+
 
 differential_features['team_home'] = differential_features['team_home'].map(team_encoding)
 differential_features['team_away'] = differential_features['team_away'].map(team_encoding)
@@ -41,13 +43,13 @@ differential_features['team_away'] = differential_features['team_away'].map(team
 
 differential_features['home_win'] = (differential_features['score_home'] > differential_features['score_away']).astype(int)
 
-# Combine features
+
 model_features = pd.concat([data_features, differential_features[['score_home', 'score_away', 'home_win']]], axis=1)
 
-# Drop rows with missing values in `model_features`
+
 model_features.dropna(inplace=True)
 
-# Select feature columns and target
+
 feature_columns = ['spread_favorite', 'over_under_line', 'team_home', 'team_away', 'score_home', 'score_away']
 X = model_features[feature_columns]
 y = model_features['home_win']
@@ -71,12 +73,12 @@ def predict_records_for_years(teams, years=5):
             records[team] = {"Wins": 0, "Losses": 0, "Games": 0}
 
         # Simulate games for the year
-        for _ in range(256):  #Makes sure each team plays 17 games each
+        for _ in range(256): 
             # Randomly choose a home and away team
             home_team = random.choice(teams)
             away_team = random.choice([team for team in teams if team != home_team])
 
-            # Ensure no team plays more than 17 games
+            #Makes sure every team plays 17 games
             while records[home_team]["Games"] >= 17 or records[away_team]["Games"] >= 17:
                 home_team = random.choice(teams)
                 away_team = random.choice([team for team in teams if team != home_team])
@@ -106,7 +108,7 @@ def predict_records_for_years(teams, years=5):
                 records[away_team]["Wins"] += 1
                 records[home_team]["Losses"] += 1
 
-            
+           
             records[home_team]["Games"] += 1
             records[away_team]["Games"] += 1
 
