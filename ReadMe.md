@@ -12,6 +12,8 @@ This script performs the following tasks:
 
 
 Output Example (5 year period):
+
+
 Year: 2024
   BAL: 7 Wins, 7 Losses
   BUF: 6 Wins, 11 Losses
